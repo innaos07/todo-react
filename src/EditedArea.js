@@ -7,13 +7,11 @@ function EditedArea(props){
     const [editInput, setEditInput] = useState(todo.text);
 
     const handlerChange =(e)=> {
-
         let text = e.target.value;
         setEditInput(text);
     }
 
     const handlerSubmit =(e)=> {
-
         e.preventDefault();
         saveTask(todo.id, editInput)
     }

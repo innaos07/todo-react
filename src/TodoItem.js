@@ -7,25 +7,21 @@ function TodoItem(props){
     const isEdited = todo.edit;
     
     const handlerDelete =()=> {
-
         removeTask(todo.id);
     }
 
     const handlerToggle =(e)=> {
-
         e.preventDefault();
         toggleTask(todo.id);
     }
 
     const handlerEdit =()=> {
-
         editTask(todo.id);
     } 
 
     return (
         
             <li className='todo__item' key={todo.id} >
-
                { isEdited ?
                     <EditedArea todo={todo}  saveTask={saveTask}/> :
                     <span 
@@ -33,7 +29,7 @@ function TodoItem(props){
                         className={todo.complete ? 'todo__task--completed' : 'todo__task--active'}>{todo.text}
                     </span>
                 }
-                
+    
                 { isEdited ? 
                     null :
                     <button className='todo__btn-edit' onClick={handlerEdit}></button>
