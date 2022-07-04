@@ -1,0 +1,70 @@
+
+.todo__item{
+    position: relative;
+    box-sizing: border-box;
+    width: 700px;
+    margin-bottom: 20px;
+
+    
+    border: 1px solid #784ed4;
+
+    background: -webkit-linear-gradient(270deg, rgb(95, 98, 208), rgb(161, 46, 218) 52%);
+    background: -moz-linear-gradient(270deg, rgb(95, 98, 208), rgb(161, 46, 218) 52%);
+    background: linear-gradient(270deg, rgb(95, 98, 208), rgb(161, 46, 218) 52%);
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+}
+
+
+.todo__task--active,
+.todo__task--completed {
+
+    display: block;
+    width: 560px;
+    padding: 20px;
+    
+   
+}
+
+.todo__task--active {
+    color: #fff;
+}
+
+.todo__task--completed {
+    opacity: 0.3;
+    text-decoration: line-through;
+}
+
+.todo__btn-edit, 
+.todo__btn-delete {
+    box-sizing: border-box;
+    padding: 0;
+    width: 25px;
+    height: 25px;
+    border: none;
+    background-color: transparent;
+    background-repeat: no-repeat;
+
+    cursor: pointer;
+}
+
+.todo__btn-edit { 
+    position: absolute;
+    top: 20px;
+    right: 50px;
+    
+    background-image: url("../img/todo-edit.svg");
+    background-size: 120%;
+    background-position: 50% ;
+
+}
+
+.todo__btn-delete { 
+    position: absolute;
+
+    top: 20px;
+    right: 20px;
+
+    background-image: url("../img/todo-delete.svg");
+}

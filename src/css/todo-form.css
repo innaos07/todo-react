@@ -1,0 +1,43 @@
+.todo__form {
+    display: flex;
+    margin-bottom: 50px;
+} 
+
+.todo__text {
+    box-sizing: border-box;
+    width: 400px;
+
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 20px;
+    padding-right: 20px;
+
+    border: 1px solid #784ed4;
+    border-radius: 5px  0  0 5px;
+    resize: none;
+    font: inherit;
+}
+
+.todo__text:focus {
+    outline: none;
+}
+
+.todo__btn-add {
+    box-sizing: border-box;
+    width: 100px;
+    border: none;
+    border-radius: 0 5px  5px  0 ;
+
+    background-color: #784ed4;
+    font: inherit;
+    color: #fff;
+    transition: all 0.5s;
+}
+
+.todo__btn-add:hover {
+    background-color: #5833aa;
+}
+
+.todo__btn-add:active {
+    background-color: #8264c5;  
+}
