@@ -1,12 +1,17 @@
 .todo__form {
     display: flex;
+    justify-content: center;
+    box-sizing: border-box;
+
     margin-bottom: 50px;
+    padding-right: 5%;
+    padding-left: 5%;
+    width: 100%;
 } 
 
 .todo__text {
     box-sizing: border-box;
-    width: 400px;
-
+    width: 100%;
     padding-top: 15px;
     padding-bottom: 15px;
     padding-left: 20px;
@@ -48,3 +53,10 @@
 .todo__btn-add:active {
     background-color: #8264c5;  
 }
+
+@media( min-width: 500px) {
+  .todo__text {
+    width: 400px;
+  }
+}
+

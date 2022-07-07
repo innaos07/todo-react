@@ -1,9 +1,14 @@
-import './css/todo-item.css';
+import './css/TodoItem.css';
 import EditedArea from './EditedArea';
+import {useSearchParams} from 'react-router-dom';
 
 function TodoItem(props){
+    
 
     const {todo, removeTask, toggleTask, editTask, saveTask} = props;
+    const [searchParams, setSearchParams] = useSearchParams();
+    const statusFilter = searchParams.get('filter');
+    console.log(statusFilter)
     const isEdited = todo.edit;
     
     const handlerDelete =()=> {
@@ -26,7 +31,8 @@ function TodoItem(props){
                     <EditedArea todo={todo}  saveTask={saveTask}/> :
                     <span 
                         onClick={handlerToggle} 
-                        className={todo.complete ? 'todo__task--completed' : 'todo__task--active'}>{todo.text}
+                        className={todo.complete ? 'todo__task--completed' : 'todo__task--active'}>
+                        {todo.text}
                     </span>
                 }
     

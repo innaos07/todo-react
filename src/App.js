@@ -3,7 +3,11 @@ import './css/App.css';
 import Header from './Header';
 import TodoForm from './TodoForm';
 import TodoItem from './TodoItem';
+import TodoList from './TodoList';
+import Nav from './Nav';
+import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import {useState, useEffect} from 'react';
+
 
 function App() {
 
@@ -17,14 +21,14 @@ function App() {
     }, [todoList]);
   
     const addTask =(userInput)=> { 
-        let textInput = userInput.trim();
 
-        if(textInput){
+        if(userInput) {
             const newTask = {
                 id: Math.random().toString(36).substr(3),
-                text: textInput,
+                text: userInput,
                 complete: false,
                 edit: false,
+                active: true,
            }
 
         setTodoList([...todoList, newTask]);
@@ -33,7 +37,7 @@ function App() {
 
     const toggleTask =(id)=> {
         setTodoList([
-            ...todoList.map((todo)=> todo.id == id ? {...todo, complete: !todo.complete} : {...todo})
+            ...todoList.map((todo)=> todo.id == id ? {...todo, complete: !todo.complete, active: !todo.active,} : {...todo})
         ]);
     }
 
@@ -53,31 +57,29 @@ function App() {
             ...todoList.map((todo)=> todo.id == id ? {...todo, edit: false, text: editInput} : {...todo})
         ]);
     }
-
-    const listTodo = todoList.map((todo)=> {
-        return <TodoItem 
-                    key={todo.id} 
-                    todo={todo} 
-                    removeTask={removeTask} 
-                    toggleTask={toggleTask} 
-                    editTask={editTask} 
-                    saveTask={saveTask}/>
-    })
-
+    
     return (
 
         <section className = 'container'>
             <div className='todo__wrapper'>
-                <Header />
-                <TodoForm addTask={addTask}/>
-                <div>
-                    <ul className='todo__list'>
-                        {listTodo}
-                    </ul>
-                </div>
+                <BrowserRouter>
+                    <>  
+                        <Header />
+                        <TodoForm addTask={addTask}/>
+                        <Nav />
+                        <Routes>
+                            <Route path="/"  element={
+                               <TodoList todoList={todoList} 
+                                         removeTask={removeTask} 
+                                         toggleTask={toggleTask} 
+                                         editTask={editTask} 
+                                         saveTask={saveTask}/>}/>
+                        </Routes>
+                    </>
+                </BrowserRouter>
             </div>  
         </section>
-        
+
     );
 }
 

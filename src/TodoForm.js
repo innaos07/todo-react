@@ -1,17 +1,20 @@
 
-import './css/todo-form.css';
+import './css/TodoForm.css';
 import {useState} from 'react';
+import {useSearchParams} from 'react-router-dom';
 
 function TodoForm(props) {
 
     const [userInput, setUserInput] = useState('');
     const [activeInput, setActiveInput] = useState(false);
-    
-    console.log(activeInput)
+    const [searchParams, setSearchParams] = useSearchParams();
 
+    const statusFilter = searchParams.get('filter');
+      console.log('statusFilter', statusFilter)
+    
     const addedActiveInput =()=> {
         setActiveInput(true)
-        setTimeout(deletedActiveInput, 500)
+        setTimeout(deletedActiveInput, 1000)
     }
 
     const deletedActiveInput =()=> {
@@ -23,12 +26,19 @@ function TodoForm(props) {
         setUserInput(textInput);
     }
 
+    const setStatusDefault =()=> statusFilter ? setSearchParams("/") : null;
+
     const handlerSubmit =(e)=> {
         e.preventDefault();
-        props.addTask(userInput);
+        
+        setStatusDefault();
+        let text = userInput.trim();
+    
+        if(text) {
+            props.addTask(userInput);
+            addedActiveInput();
+        } 
         setUserInput('');
-        addedActiveInput();
-        console.log(activeInput)
     }
 
     return(

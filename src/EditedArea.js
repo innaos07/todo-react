@@ -18,7 +18,7 @@ function EditedArea(props){
 
     return(
 
-        <form  onSubmit={handlerSubmit}>
+        <form  className='todo__form-edited' onSubmit={handlerSubmit}>
            <textarea  onChange={handlerChange} className='todo__task--edited' value={editInput}></textarea>
            <button className='todo__btn-save'></button>
         </form>

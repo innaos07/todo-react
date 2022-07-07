@@ -7,11 +7,10 @@ body {
 }
 
 .container {
-  width: 800px;
+  width: 100%;
+  min-width: 320px;
   margin: 0 auto;
-  background-color: #fff;
- 
-  
+  background-color: #fff; 
 }
 
 .todo__wrapper {
@@ -20,7 +19,7 @@ body {
   align-items: center;
 }
 
-.todo__list {
+/*.todo__list {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -28,5 +27,11 @@ body {
   padding: 0;
   list-style: none;
 
+}*/
+
+@media( min-width: 768px) {
+  .container {
+    width: 768px;
+  }
 }
 
